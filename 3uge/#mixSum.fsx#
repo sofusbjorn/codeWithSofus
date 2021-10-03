@@ -1,0 +1,50 @@
+printfn "Sum calculator and simpleSum 3.0"
+printfn "Please insert number: "
+
+
+let input = int (System.Console.ReadLine())
+printfn " "
+
+let sumSimple (x : int) : int =
+
+    let n = x
+    let sumFunc = (n*(n+1))/2
+    sumFunc
+
+(* opgave b: Sumformlen kan skrives ud som s1 =  1 + 2 + 3 +4 + ... n
+Hvis man så lægger det udtryk sammen med den omvendte rækkefølge s2 = n + (n - 1) + (n-2)+...1, altså:
+(s1 + s2) = (n + 1) + (n + 1) + (n + 1) + ... (n + 1) = n(n+1)
+Men da vi tog udgangspunkt i 2 gange udtrykket divideres med 2. Dermed er sumformlen udtrykt ved:
+(n(n+1))/2. *)
+
+let sum (x : int) : int =
+
+    let mutable i = 1
+    let mutable sumFunc = 0
+    let n = x
+    
+    while i <= n do
+        sumFunc <- sumFunc + i
+        i <- i + 1
+    sumFunc
+
+let calSimple = sumSimple input
+let calSum = sum input
+
+if input < 1 then
+    printfn "sum from %A to 1 is 0" input
+    printfn "And sumSimple from %A to 1 is 0" input
+
+else
+    printfn "sum from %A to 1 is %A" input calSum
+    printfn "And sumSimple from %A to 1 is %A" input calSimple
+
+
+
+(* Opgave 3g0 e) Typen int er defineret for -2.147.483.648 til 2.147.483.647
+dvs. at lige nu er den største værdi for n præcis: 2.147.483.647, hvor de to sumfunktioner producerer det rigtige output.
+For at forbedre funktionerne kan typen int64 eller typen uint64 benyttes.
+int64 er defineret for -9.223.372.036.854.775.808 til 9.223.372.036.854.775.807,
+hvor uint64 er defineret for 0 til 18.446.744.073.709.551.615.
+Det vurderes at den type der giver bedst mening for vores funktion er uint64, da vi ikke er interesserede i n < 1.
+Man kan altså optimere funktionen ved at benytte typen uint64 istedet for int.*)

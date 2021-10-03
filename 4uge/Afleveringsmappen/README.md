@@ -1,0 +1,79 @@
+# Kort beskrivelse af hvordan koden oversættes og køres.
+----------
+
+Koden køres ved først at compile .fs og .fsi filen: 
+
+```console
+$ fsharpc -a vec2dsmall.fsi vec2dsmall.fs
+```
+
+Dernæst ved at køre black-box testen, *4i1.fsx*, sammen med library filen *vec2dsmall.dll*: 
+
+```console
+$ fsharpc -r vec2dsmall.dll 4i1.fsx && mono 4i1.exe
+```
+
+Desuden kan *4i2.fsx* også køres med samme procedure: 
+
+```console
+$ fsharpc -r vecdsmall.dll 4i2.fsx && mono 4i2.exe
+```
+
+
+## En beskrivelse af resultaterne for Black-box test og kommentere evt. fejlede test.
+----------
+
+Det kan aflæses af nedenstående billede at alle mine tests returnerede true :)
+![Figur 1](https://github.com/sofusbjorn/codeWithSofus/raw/main/markdownImgs/firstEverPic.4i1.png "Figur 1")
+
+## Besvarelse på opg. 4i2, inkl. håndkøringstabel.
+----------
+
+| Step 	| Line 	| Env 	| Bindings and Evaluations 	|
+|:---:	|:---:	|:---:	|:---:	|
+| 0 	| - 	| E0 	| () 	|
+| 1 	| 1 	| E0 	| v = (1.3, -2.5) 	|
+| 2 	| 2 	| E0 	| output = "Vector (1.3, -2.5): (?, ?)" 	|
+| 3 	| 2 	| E0 	| vec2d.len = ((x,y), body()) 	|
+| 4 	| 2 	| E1 	| ((x,y)=(1.3, -2.5), body()) 	|
+| 5 	| 2 	| E2 	| xRes = (1.3**2) 	|
+| 6 	| 2 	| E2 	| yRes = ((-2.5)**2) 	|
+| 7 	| 2 	| E2 	| return = Sqrt (1.69 + 6.25) 	|
+| 8 	| 2 	| E1 	| vec2d.len v = 2.8178005607 	|
+| 9 	| 2 	| E0 	| vec2d.ang = ((x,y), body()) 	|
+| 10 	| 2 	| E1 	| ((x,y)=(1.3, -2.5), body()) 	|
+| 11 	| 2 	| E2 	| return = atan2 (-2.5, 1.3) 	|
+| 12 	| 2 	| E1 	| vec2d.ang v = -1.091277034802 	|
+| 13 	| 2 	| E0 	| output = "Vector (1.3, -2.5): (2.8178005607, -1.091277034802)" 	|
+| 14 	| 3 	| E0 	| w = (-0.1, 0.5) 	|
+| 15 	| 4 	| E0 	| output = "Vector (-0.1, 0.5): (?, ?)" 	|
+| 16 	| 4 	| E0 	| vec2d.len = ((x,y), body()) 	|
+| 17 	| 4 	| E1 	| ((x,y)=(-0.1, 0.5), body()) 	|
+| 18 	| 4 	| E2 	| xRes = ((-0.1)**2) 	|
+| 19 	| 4 	| E2 	| yRes = (0.5**2) 	|
+| 20 	| 4 	| E2 	| return = Sqrt (0.01 + 0.25) 	|
+| 21 	| 4 	| E1 	| vec2d.len w = 0.5099019513592785 	|
+| 22 	| 4 	| E0 	| vec2d.ang = ((x,y), body()) 	|
+| 23 	| 4 	| E1 	| ((x,y)=(-0.1, 0.5), body()) 	|
+| 24 	| 4 	| E2 	| return = atan2 (0.5, -0.1) 	|
+| 25 	| 4 	| E1 	| vec2d.ang w = 1.768191886645 	|
+| 26 	| 4 	| E0 	| output = "Vector (1.3, -2.5): (0.5099019513592785, 1.768191886645)" 	|
+| 27 	| 5 	| E0 	| s = vec2d.add v w 	|
+| 28 	| 5 	| E0 	| vec2d.add = ((x1,y1),(x2,y2), body()) 	|
+| 29 	| 5 	| E1 	| ((x1,y1),(x2,y2)=(1.3,-2.5),(-0.1, 0.5), body()) 	|
+| 30 	| 5 	| E2 	| x3 = 1.3 + (-0.1) 	|
+| 31 	| 5 	| E2 	| y3 = (-2.5) + 0.5 	|
+| 32 	| 5 	| E2 	| returns = (x3, y3) = (1.2, -2.0) 	|
+| 33 	| 5 	| E1 	| vec2d.add v w=  (1.2, -2.0) 	|
+| 34 	| 6 	| E0 	| output = "Vector (1.2,  -2.0): (?, ?)" 	|
+| 35 	| 6 	| E0 	| vec2d.len = ((x,y), body()) 	|
+| 36 	| 6 	| E1 	| ((x,y)=(1.2, -2.0), body()) 	|
+| 37 	| 6 	| E2 	| xRes = (1.2**2) 	|
+| 38 	| 6 	| E2 	| yRes = ((-2)**2) 	|
+| 39 	| 6 	| E2 	| return = Sqrt (1.44 + 4) 	|
+| 40 	| 6 	| E1 	| vec2d.len s = 2.3323807579381204 	|
+| 41 	| 6 	| E0 	| vec2d.ang = ((x,y), body()) 	|
+| 42 	| 6 	| E1 	| ((x,y)=(1.2, -2.0), body()) 	|
+| 43 	| 6 	| E2 	| return = atan2 (-2.0, 1,2) 	|
+| 44 	| 6 	| E1 	| vec2d.ang w = -1.030376826524 	|
+| 45 	| 6 	| E0 	| output = "Vector (1.3, -2.5): (2.3323807579381204, -1.030376826524)" 	|

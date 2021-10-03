@@ -1,0 +1,1 @@
+Koden køres ved at kalde "fsharpc 3g0.fsx" i det rette directory, og dernæst kaldes "mono 3g0.exe"
