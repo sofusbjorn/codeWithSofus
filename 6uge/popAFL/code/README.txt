@@ -1,3 +1,6 @@
+Koden køres således:
+$ fharpc -a continuedFraction.fsi continuedFraction.fs && fsharpc -r continuedFraction.dll continuedFractionTest.fsx && mono continuedFractionTest.exe
+
 +-------------+--------+-------------------------------------+-------------+------------------+
 |     unit    | branch |              condition              |    input    | expected output  |
 +-------------+--------+-------------------------------------+-------------+------------------+
