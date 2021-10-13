@@ -1,4 +1,4 @@
-open ContinuedFraction
+open continuedFraction
 
 let (=~) a b = 
     a < b + 0.00001 && a > b - 0.00001
@@ -8,7 +8,7 @@ printfn " "
 printfn "Black-Box testing af de to rekursive funktioner"
 printfn "cfrac2float:"
 printfn " %5b: []" (cfrac2float [] = 0.0)
-printfn " %5b: Indeholder et nul: [ _ 0]" (cfrac2float [1;0] = 0.0)
+printfn " %5b: Indeholder et nul: [ _ 0]" (cfrac2float [1;0] = infinity)
 printfn " %5b: Et element [100]" (cfrac2float [100] = 100.0)
 printfn " %5b: [1;2;3;4]" (cfrac2float [1;2;3;4] =~ 1.43333)
 printfn " "
@@ -22,7 +22,7 @@ printfn " %5b: Branch 1a" (cfrac2float [1;2;3;4] =~ 1.43333)
 printfn " %5b: Branch 1b" (cfrac2float [100] = 100.0)
 //printfn " %5b: Branch 1c" (cfrac2float ) ?
 printfn " %5b: Branch 1d" (cfrac2float [] = 0.0)
-printfn " %5b: Branch 1e" (cfrac2float [1;0] = 0.0)
+printfn " %5b: Branch 1e" (cfrac2float [1;0] = infinity)
 //printfn " %5b: Branch 1f" (cfrac2float ) ?
 printfn " %5b: Branch 1g" (cfrac2float [0;0;0] = 0.0)
 ///printfn " %5b: Branch 1h" (cfrac2float ) ?
