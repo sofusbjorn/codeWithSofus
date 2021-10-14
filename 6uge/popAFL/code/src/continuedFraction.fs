@@ -13,7 +13,7 @@ let rec cfrac2float (lst : int list) : float =
 ///<summary> Hjælpefunktion til float2cfrac </summary>
 ///<param name = "x_i">Reelt tal i form af Float.</param>
 ///<param name = "lst">integer liste</param>
-///<returns>Den tilsvarende kontinuære brøk</returns>
+///<returns>Den appendede liste til float2cfrac</returns>
 let rec lilHelper (x_i : float) (lst : int list)  : int list =
         let q_i = (floor(System.Math.Round (x_i, 6))) 
         let r_i =  x_i - q_i

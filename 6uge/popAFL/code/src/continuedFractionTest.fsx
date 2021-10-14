@@ -23,7 +23,7 @@ printfn "cfrac2float:"
 printfn " %5b: Branch 1a" (cfrac2float [1;2;3;4] =~ 1.43333)
 printfn " %5b: Branch 1b" (cfrac2float [] = 0.0)
 printfn " %5b: Branch 1c" (cfrac2float [100] = 100.0)
-printfn " %5b: Branch 1d" ((cfrac2float [-1;-2;-3;4] = -1.43333) = false)
+printfn " %5b: Branch 1d" (cfrac2float [-1;-2;-3;-4] =~ -1.43333)
 printfn " "
 printfn "float2cfrac:"
 printfn " %5b: Branch 1a" (float2cfrac 3.245 = [3;4;12;4])
