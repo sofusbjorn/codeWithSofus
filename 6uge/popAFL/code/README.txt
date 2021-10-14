@@ -1,4 +1,5 @@
-Koden køres således:
+Mit navn er Sofus Ostrowska Bjørn (dxq257), og min kode skal køres således:
+
 $ fharpc -a continuedFraction.fsi continuedFraction.fs && fsharpc -r continuedFraction.dll continuedFractionTest.fsx && mono continuedFractionTest.exe
 
 +-------------+--------+-------------------------------------+-------------+------------------+
