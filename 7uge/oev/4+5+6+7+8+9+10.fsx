@@ -25,7 +25,7 @@ let succRank (r : rank) : rank option =
 printfn "%A" (succRank King)
 printfn "%A" (succRank Ace)
 
-// old but doesnt really do what it is meant to
+// old but doesnt really do what it is meant to// or does it?
 let succCard (c : card) : card option =
     match c with
     | (Ace,Spades) -> None
@@ -55,15 +55,10 @@ let initDeck (unit) : card list =
 printfn "%65A" (initDeck ())
 
 let sameRank (c : card) (cc : card) : bool =
-    if (fst c) = (fst cc)
-    then true
-    else false
+    (fst c) = (fst cc)
 
 let sameSuit (c : card) (cc : card) : bool =
-    if (snd c) = (snd cc)
-    then true
-    else false
-
+    (snd c) = (snd cc)
 
 printfn "%A" (sameRank (Two, Hearts) (Two, Spades))
 printfn "%A" (sameRank (Three, Spades) (Two, Spades))
@@ -75,8 +70,12 @@ printfn "%A" (sameSuit (Three, Spades) (Two, Spades))
 printfn "%A" (sameSuit (Two, Clubs) (Ace, Clubs))
 
 let highCard (c : card) (cc : card) : card =
-    if c = cc then c
-    elif sameSuit (c) (cc) && (fst c) >= (fst cc) then c
+    if sameRank (c) (cc) then c
+    elif (fst c) >= (fst cc) then c
     else cc
 
 printfn "%A" (highCard (Five, Spades) (Two, Spades))
+printfn "%A" (highCard (Five, Hearts) (Two, Diamonds))
+printfn "%A" (highCard (Five, Spades) (Two, Diamonds))
+printfn "%A" (highCard (Six, Spades) (Six, Diamonds))
+printfn "%A" (highCard (Six, Hearts) (Ace, Diamonds))
