@@ -75,4 +75,8 @@ printfn "%A" (sameSuit (Three, Spades) (Two, Spades))
 printfn "%A" (sameSuit (Two, Clubs) (Ace, Clubs))
 
 let highCard (c : card) (cc : card) : card =
-    match 
+    if c = cc then c
+    elif sameSuit (c) (cc) && (fst c) >= (fst cc) then c
+    else cc
+
+printfn "%A" (highCard (Five, Spades) (Two, Spades))
