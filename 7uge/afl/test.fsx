@@ -30,6 +30,16 @@ let rotate (b : Board) (p : Position) : Board =
         b.[0..(p-1)] @ (b.[p + boardSize] :: (b.[p] :: (b.[(p+2) .. (p+boardSize-1)] @ (b.[p+boardSize+1] :: (b.[p+1] :: (b.[(p+boardSize+2)..])))))) 
     else b
 
+let scramble (b : Board) (m : uint) : Board =
+    let rnd = System.Random ()
+
+    let rec scrambler (b : Board) (p : Position) (m : uint) : Board =
+        match m with
+        | 0u -> b
+        | yes when validRotation (b) (p) -> (scrambler (rotate (b) (p)) (p) (m-1u))
+        | _ -> scrambler (b) (rnd.Next (int(sqrt(double b.Length)))) (m) 
+    scrambler (b) (rnd.Next (int(sqrt(double b.Length)))) (m)
+
 printfn "%s" (board2Str (create 4u))
 printfn "%b" (validRotation (create 4u) (13))
 printfn "%b" (validRotation (create 4u) (12))
@@ -39,3 +49,5 @@ printfn "%b" (validRotation (create 5u) (21))
 printfn "4x4 med a: %A" (rotate (create 4u) (0))
 printfn "4x4 med d: %A" (rotate (create 4u) (3))
 printfn "4x4 med j: %A" (rotate (create 4u) (9))
+
+printfn "scrambler: %A" (scramble (create 4u) (10u))
