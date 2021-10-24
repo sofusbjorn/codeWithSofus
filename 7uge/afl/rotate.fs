@@ -27,11 +27,21 @@ let rotate (b : Board) (p : Position) : Board =
 
 let scramble (b : Board) (m : uint) : Board =
     let rnd = System.Random ()
+    let (boardSize : int) = int(sqrt(double b.Length))
+
+    let rec allowedRotation (b : Board) (p : Position) : Position =
+        if validRotation (b) (rnd.Next (boardSize) 
+        then p
+        else allowedRotation (b) (rnd.Next (boardSize))
 
     let rec scrambler (b : Board) (p : Position) (m : uint) : Board =
         match m with
         | 0u -> b
-        | yes when validRotation (b) (p) -> (scrambler (rotate (b) (p)) (p) (m-1u))
-        | _ -> scrambler (b) (rnd.Next (int(sqrt(double b.Length)))) (m) 
-    scrambler (b) (rnd.Next (int(sqrt(double b.Length)))) (m)
+        | _ -> (scrambler (rotate (b) (allowedRotation)) (allowedRotation) (m-1u)) 
+
+    scrambler (b) (allowedRotation) (m)
+
+        // | yes when validRotation (b) (p) -> (scrambler (rotate (b) (p)) (p) (m-1u))
+        // | _ -> scrambler (b) (rnd.Next (int(sqrt(double b.Length)))) (m) 
+    // scrambler (b) (rnd.Next (int(sqrt(double b.Length)))) (m)
     
