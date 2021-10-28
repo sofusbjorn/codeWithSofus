@@ -37,11 +37,11 @@ let succCard (c : card) : card option =
       
 
 
-printfn "%A" (succCard (Two, Hearts))
-printfn "%A" (succCard (Three, Hearts))
-printfn "%A" (succCard (Ace, Hearts))
-printfn "%A" (succCard (Ace, Spades))
-printfn "%A" (succCard (Two, Spades))
+printfn "succcard %A" (succCard (Two, Hearts))
+printfn "succard %A" (succCard (Three, Hearts))
+printfn "succard %A" (succCard (Ace, Hearts))
+printfn "succard %A" (succCard (Ace, Spades))
+printfn "succard %A" (succCard (Two, Spades))
 
 let rec helpingRec (c : card) (lst : card list) : card list =
     match c with
